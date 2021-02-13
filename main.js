@@ -10,21 +10,32 @@ yes.addEventListener('click', () => {
 });
 
 no.addEventListener('mouseover', () => {
-    console.log(bodyWidth, bodyHeight)
+    const buttonWidth = 300;
+    const buttonHeight = 60;
+
+    no.style.width = '300px';
+
     let xPosition = Math.floor(Math.random() * bodyWidth);
     let yPosition = Math.floor(Math.random() * bodyHeight);
     no.style.position = 'absolute';
 
-    if (xPosition + no.style.width > bodyWidth) {
-        no.style.right = xPosition + 'px';
-    } else {
+    if (xPosition + buttonWidth > bodyWidth) {
+        no.style.left = xPosition - bodyWidth - 'px';
+    }
+    else if (xPosition - buttonWidth > bodyWidth) {
+        no.style.left = xPosition - bodyWidth + 'px';
+    }
+    else {
         no.style.left = xPosition + 'px';
     }
-    if (yPosition + no.style.height > bodyHeight) {
-        no.style.top = yPosition + 'px';
-    } else {
-        no.style.bottom = yPosition + 'px';
-    }
 
-    console.log(xPosition, yPosition);
+    if (yPosition + buttonHeight > bodyHeight) {
+        no.style.top = yPosition - bodyHeight + 'px';
+    }
+    else if (yPosition - buttonHeight > bodyHeight) {
+        no.style.top = yPosition - bodyHeight + 'px';
+    }
+    else {
+        no.style.top = yPosition + 'px';
+    }
 });
